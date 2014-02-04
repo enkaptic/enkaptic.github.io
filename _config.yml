@@ -6,3 +6,4 @@ pygments: true
 exclude: [README.md]
 permalink: /:year/:month/:day/:title/
 paginate: 10
+paginate_path: "page/:num/"
