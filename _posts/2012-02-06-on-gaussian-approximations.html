@@ -1,0 +1,22 @@
+---
+layout: post
+title: On Gaussian approximations
+categories:
+- Research
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+---
+<p>You have a function that you want to approximate as an N-dimensional (multivariate) Gaussian (normal) distribution. What do you do?</p>
+<p>If you are me, you spend a couple of weeks deriving stuff, and then finally figure out the easy way.</p>
+<p>But hopefully you are not me, so here is the easy way, to save you the bother.</p>
+<p>First, find the peak of your function, and put a hat on the value(s) or the parameter(s) at this point. Now your (N-dimensional) function can be approximated as</p>
+<p>$$!f(x) \simeq f(\hat{x})\exp \left[-\frac{1}{2} (x-\hat{x})^\mathrm{T} \Sigma^{-1} (x-\hat{x}) \right]$$</p>
+<p>where $$\Sigma$$ is the covariance matrix, and our task it to figure out what it is.</p>
+<p>But fear not, help is at hand. If we find the following <a href="http://en.wikipedia.org/wiki/Hessian_matrix">Hessian matrix</a>, and if we assume that the covariance matrix is symmetric, we have</p>
+<p>$$!\begin{align} H_{ij} &\equiv \frac{\partial^2}{\partial x_i \partial x_j} \left( - \ln f(x) \right) \\ &\simeq \frac{\partial^2}{\partial x_i \partial x_j} \left( - \ln f(\hat{x}) + \frac{1}{2} (x-\hat{x})^\mathrm{T} \Sigma^{-1} (x-\hat{x}) \right) \\ &= \frac{1}{2} (\Sigma^{-1}_{ij} + \Sigma^{-1}_{ji}) \\ &= \Sigma^{-1}_{ij} \end{align}$$</p>
+<p>That's it. Easy. Now you can even <a href="http://en.wikipedia.org/wiki/Multivariate_normal_distribution">integrate the function</a></p>
+<p>$$!\int f(x) \, \mathrm{d}x = (2\pi)^{N/2} |\Sigma|^{1/2} f(\hat{x}) = (2\pi)^{N/2} |H|^{-1/2} f(\hat{x})$$</p>

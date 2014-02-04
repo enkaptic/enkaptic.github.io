@@ -1,0 +1,25 @@
+---
+layout: post
+title: PSFs in IDL
+categories:
+- Computing
+tags:
+- IDL
+- point sources
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+---
+<p>Two methods of approximating a <a href="http://en.wikipedia.org/wiki/Point_spread_function">point-spread function</a> in IDL:</p>
+<p>1. <a href="http://www.bo.astro.it/~giangi/StarFinder/">StarFinder</a> seems to do a great job at finding point sources in crowded fields. It includes a routine for generating the <a href="http://en.wikipedia.org/wiki/Airy_pattern">Airy pattern</a>. For a 51 x 51 array, with the peak at [25, 25], and an FWHM of 8.0 pixels, this is the command:</p>
+<pre lang="text">psf = airy_pattern(51, 51, 25, 25, 2./8.0)
+isurface, psf</pre>
+<p>The output looks something like this:</p>
+<p><img class="alignnone size-full wp-image-179" title="PSF Airy pattern (StarFinder/IDL)" src="{{ site.url }}/assets//psf_airy.png" alt="PSF Airy pattern (StarFinder/IDL)" width="480" height="321" /></p>
+<p>2. The <a href="http://idlastro.gsfc.nasa.gov/">IDL Astronomy User's Library</a> contains a routine, psf_gaussian, that produces a Gaussian PSF. To produce the same as above, the command would be:</p>
+<pre lang="text">psf = psf_gaussian(npix=51, fwhm=8.0, /double)
+isurface, psf</pre>
+<p>... which produces something like this:</p>
+<p><img class="alignnone size-full wp-image-180" title="PSF Gaussian (IDL Astronomy User's Library)" src="{{ site.url }}/assets//psf_gaussian.png" alt="PSF Gaussian (IDL Astronomy User's Library)" width="479" height="324" /></p>

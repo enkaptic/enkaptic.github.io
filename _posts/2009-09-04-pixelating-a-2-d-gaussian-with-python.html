@@ -1,0 +1,34 @@
+---
+layout: post
+title: Pixelating a 2-D Gaussian with Python
+categories:
+- Research
+tags:
+- photometry
+- point sources
+- Python
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+---
+<p>They're coming thick and fast now.</p>
+<p>Here's a Python function to accompany the <a href="http://www.anthonysmith.me.uk/research/2009/09/04/on-the-normalization-of-prfs/">previous post</a>. It's not maximally efficient, but should make sense...</p>
+<pre lang="python">
+from scipy import stats
+def gaussian_pixel(minxy, maxxy, sigma, meanxy=(0.,0.), norm=None):
+    """Return the value of a pixel sampling a 2D Gaussian,
+    normalized such that the area under the Gaussian is 1
+    (default) or such that the peak is given by norm."""
+    x1, y1 = minxy
+    x2, y2 = maxxy
+    x0, y0 = meanxy
+    if norm is None:
+        norm = 1. / 2 / math.pi / sigma ** 2
+    return norm * 2 * math.pi * sigma ** 2 / (x2 - x1) / (y2 - y1) * (
+        (1 - stats.erfc((x2 - x0) / math.sqrt(2) / sigma)) / 2.
+        - (1 - stats.erfc((x1 - x0) / math.sqrt(2) / sigma)) / 2.) * (
+        (1 - stats.erfc((y2 - y0) / math.sqrt(2) / sigma)) / 2.
+        - (1 - stats.erfc((y1 - y0) / math.sqrt(2) / sigma)) / 2.)
+</pre>

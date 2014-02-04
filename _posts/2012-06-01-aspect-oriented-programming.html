@@ -1,0 +1,46 @@
+---
+layout: post
+title: Aspect-oriented programming
+categories:
+- Computing
+tags:
+- Andrew Basden
+- aspect-oriented programming
+- AspectJ
+- Eclipse
+- Herman Dooyeweerd
+- Java
+- object-oriented programming
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+---
+<p>That's right, not <em>object</em>-oriented, but <em>aspect</em>-oriented. What's that all about then?</p>
+<p>Computers store data, and computer programs do stuff to the data. You can write computer programs in that way: basically as a list of things to do to some data. But those programs end up very messy (as I know from experience!). So we need a better way of representing what is going on.</p>
+<p>Enter <a href="http://en.wikipedia.org/wiki/Object-oriented_programming">object-oriented programming</a> (OOP). We represent what is going on under the surface in terms of <strong>objects</strong>. An object is the basic unit of a program. It hides (encapsulates) some data, and if you ask it nicely, it will do something and tell you what you need to know. A computer program is now a collection of objects that interact with each other to perform some complex task. This is much better, as the software developer can focus on crafting elegant objects (or, more accurately, <em>kinds</em> of objects, or <strong>classes</strong>). If these are well designed, the program will be robust, and you can change little bits of it without worrying that the whole thing will break.</p>
+<p>But wait: what if we can't represent all that a program needs to do in terms of individual objects? What if there are some <a href="http://en.wikipedia.org/wiki/Concern_(computer_science)">concerns</a> that are relevant for every element of the program? For example, a typical program might be littered with statements dealing with logging, security, or handling errors. These are concerns that cut across the basic functionality of a program.</p>
+<p>Enter <a href="http://en.wikipedia.org/wiki/Aspect-oriented_programming">aspect-oriented programming</a> (AOP). This provides a way of separating out those cross-cutting concerns into separate <strong>aspects</strong>, which provide additional commands to be executed at particular points (or particular kinds of points) in the program execution.</p>
+<p>I'm going to give it a try with the Java development I'm working on. I'll let you know how it goes. It should be useful for testing, allowing me to keep track of how many times a particular method is executed, what the values of the parameters are, how much time is spent on different steps, and what is making it go wrong, for example.</p>
+<p>Fortunately, it's dead easy to get started. For Java, the most widely-used AOP extension is <a href="http://www.eclipse.org/aspectj/">AspectJ</a>. If you have a Java project in <a href="http://en.wikipedia.org/wiki/Eclipse_(software)">Eclipse</a>, simply install the <a href="http://www.eclipse.org/ajdt/downloads/">AspectJ Development Tools</a> plugin, convert the project to an AspectJ project, and that's it. Here's "Hello world" using an aspect:</p>
+<pre lang="java">public class HelloWorld {
+    private void sayHello() {
+        System.out.println("Hello");
+    }
+
+    public static void main(String[] args) {
+        new HelloWorld().sayHello();
+    }
+}
+
+public aspect World {
+    pointcut greeting():
+        execution(* HelloWorld.sayHello(..));
+
+    after() returning: greeting() {
+        System.out.println("World!");
+    }
+}</pre>
+<p>The <code>sayHello</code> method executes, and then the aspect interrupts the execution and prints "World!".</p>
+<p>Part of the attraction of AOP to me is that it has resonances with the philosophy of <a href="http://en.wikipedia.org/wiki/Herman_Dooyeweerd">Herman Dooyeweerd</a>, who worked on a model of reality called the <a href="http://www.dooy.salford.ac.uk/asp.html">Theory of Aspects</a>, in which the whole of reality can be described in terms of (around) 15 (cross-cutting) <a href="http://www.dooy.salford.ac.uk/aspects.html">aspects</a>. In fact, I first heard of AOP via <a href="http://www.dooy.salford.ac.uk/using/aop.html">Andrew Basden's page on the topic</a>.</p>

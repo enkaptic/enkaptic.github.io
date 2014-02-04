@@ -1,0 +1,35 @@
+---
+layout: post
+title: MNRAS line wrapping in authors lists
+categories:
+- Computing
+tags:
+- LaTeX
+- MNRAS
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+---
+<p>In case anyone else using the <a href="http://www.wiley.com/bw/static/mnras_latex.asp">MNRAS LaTeX class</a> has been tearing their hair out inserting line breaks manually into long author (and institution) lists, using <code>\newauthor</code>, here's how I did it:</p>
+<pre lang="latex">\author[J.~Bloggs et al.]
+{\parbox{\textwidth}{J.~Bloggs,$^{1}$\thanks{E-mail: \texttt{j.bloggs@no.where}}
+J.~Bloggs,$^{2,3}$
+J.~Bloggs,$^{3}$
+J.~Bloggs,$^{4}$
+J.~Bloggs,$^{5}$
+J.~Bloggs,$^{6}$
+%...
+J.~Bloggs$^{99}$ and
+J.~Bloggs$^{100}$}\vspace{0.4cm}\
+\parbox{\textwidth}{$^{1}$Department of Something, Somewhere\
+$^{2}$Department of Something, Somewhere\
+$^{3}$Department of Something, Somewhere\
+$^{4}$Department of Something, Somewhere\
+$^{5}$Department of Something, Somewhere\
+$^{6}$Department of Something, Somewhere\
+%...
+$^{99}$Department of Something, Somewhere\
+$^{100}$Department of Something, Somewhere}}</pre>
+<p>Next: a Python script to generate the above from a simple list of authors and affiliations.</p>

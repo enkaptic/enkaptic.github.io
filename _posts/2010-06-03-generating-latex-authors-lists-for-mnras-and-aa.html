@@ -1,0 +1,142 @@
+---
+layout: post
+title: Generating LaTeX authors lists for MNRAS and A&A
+categories:
+- Computing
+tags:
+- A&amp;A
+- LaTeX
+- MNRAS
+- Python
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+---
+<p>Okay, a bit boring, but as <a href="http://www.anthonysmith.me.uk/research/2010/05/07/mnras-line-wrapping-in-authors-lists/">promised</a>, here are some Python functions to generate LaTeX source for long authors lists for MNRAS and A&amp;A.</p>
+<p><!--more-->First, a small utility:</p>
+<pre lang="python">def getSortedInstituteCodes(authorList, authorInstituteCodes):
+    """Return a list of institute codes, in the correct order for authorList.
+
+    authorList = ["J.~Bloggs", "A.N.~Other"]
+    authorInstituteCodes = {"J.~Bloggs":1, "A.N.~Other":[1,"Sussex"]}
+    """
+    instituteCodes = []
+    for author in authorList:
+        codes = authorInstituteCodes[author]
+        if not hasattr(codes, '__iter__'):
+            codes = [codes]
+        for code in codes:
+            if not code in instituteCodes:
+                instituteCodes.append(code)
+    return instituteCodes</pre>
+<p>then the function for MNRAS:</p>
+<pre lang="python">def getAuthorsStringMNRAS(authorList, authorInstituteCodes, institutesTex,
+                          authorEmails):
+    """Return a string containing LaTeX for MNRAS authors list.
+
+    authorList = ["J.~Bloggs", "A.N.~Other"]
+    authorInstituteCodes = {"J.~Bloggs":1, "A.N.~Other":[1,"Sussex"]}
+    institutesTex = {1:"Somewhere, Earth", "Sussex":"University of Sussex"}
+    authorEmails = {"J.~Bloggs": "j.bloggs@no.where"}
+    """
+    instituteCodes = getSortedInstituteCodes(authorList, authorInstituteCodes)
+
+    # Make a list of strings:
+    # "Author Name$^{1,2}$\thanks{E-mail: \texttt{j.bloggs@no.where}}"
+    authorInstituteList = []
+    for author in authorList:
+        try:
+            codes = authorInstituteCodes[author]
+            if not hasattr(codes, '__iter__'):
+                codes = [codes]  # Only one institute code for this author
+            authorInstituteList.append(
+                author
+                + ',$^{' + ','.join([str(instituteCodes.index(code) + 1)
+                                     for code in codes])
+                + '}$')
+        except KeyError:
+            authorInstituteList.append(author + ',')
+        try:
+            email = authorEmails[author]
+            authorInstituteList[-1] += '\thanks{E-mail: \texttt{'
+            authorInstituteList[-1] += email + '}}'
+        except KeyError:
+            pass # No email address for this author
+    # Sort out the punctuation (won't work if the penultimate or ultimate
+    # author has no institute)
+    authorInstituteList[-2] = authorInstituteList[-2].replace(',$', '$')
+    authorInstituteList[-2] += ' and'
+    authorInstituteList[-1] = authorInstituteList[-1].replace(',$', '$')
+
+    # Put it all together
+    authorsString = '\author[' + authorList[0] + ' et al.]'
+    authorsString += '\n{\parbox{\textwidth}{'
+    authorsString += '\n'.join(authorInstituteList)
+    authorsString += '}\vspace{0.4cm}\\\n'
+    authorsString += '\parbox{\textwidth}{'
+    authorsString += '\\\n'.join(['$^{' + str(iInst + 1) + '}$'
+                                    + institutesTex[instituteCodes[iInst]]
+                                    for iInst in range(len(instituteCodes))])
+    authorsString += '}}\n'
+
+    return authorsString</pre>
+<p>and the function for A&amp;A:</p>
+<pre lang="python">def getAuthorsStringAA(authorList, authorInstituteCodes, institutesTex,
+                       authorEmails):
+    """Return a string containing LaTeX for A&A authors list.
+
+    authorList = ["J.~Bloggs", "A.N.~Other"]
+    authorInstituteCodes = {"J.~Bloggs":1, "A.N.~Other":[1,"Sussex"]}
+    institutesTex = {1:"Somewhere, Earth", "Sussex":"University of Sussex"}
+    authorEmails = {"J.~Bloggs": "j.bloggs@no.where"}
+    """
+    instituteCodes = getSortedInstituteCodes(authorList, authorInstituteCodes)
+
+    # Associate institute numbers with authors and emails with institutes
+    authorInstituteList = []  # A list of "Author Name\inst{1,2}" strings
+    instituteEmails = {}  # A dictionary of email addresses for each institute
+    for author in authorList:
+        try:
+            codes = authorInstituteCodes[author]
+            if not hasattr(codes, '__iter__'):
+                codes = [codes]  # Only one institute code for this author
+            authorInstituteList.append(
+                author + '\inst{'
+                + ','.join([str(instituteCodes.index(code) + 1)
+                            for code in codes])
+                + '}')
+            try:
+                email = authorEmails[author]
+                try:
+                    instituteEmails[codes[0]].append(email)
+                except KeyError:  # First email address for this institute
+                    instituteEmails[codes[0]] = [email]
+            except KeyError:
+                pass # No email address associated with author
+        except KeyError:
+            authorInstituteList.append(author)
+
+    # Create a list of "Institute Name, Address\
+    #                   \email{j.bloggs@no.where}" strings
+    instituteEmailList = []
+    for instituteCode in instituteCodes:
+        try:
+            emails = instituteEmails[instituteCode]
+            instituteEmailList.append(
+                institutesTex[instituteCode]
+                + ''.join(['\\\n\email{' + email + '}' for email in emails]))
+        except KeyError:
+            instituteEmailList.append(institutesTex[instituteCode])
+
+    # Put it all together
+    authorsString = '\author{'
+    authorsString += '\n\and '.join(authorInstituteList)
+    authorsString += '}\n'
+    authorsString += '\institute{'
+    authorsString += '\n\and '.join(instituteEmailList)
+    authorsString += '}\n'
+
+    return authorsString</pre>
+<p>Anyone still reading?</p>

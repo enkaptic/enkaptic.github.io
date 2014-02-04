@@ -1,0 +1,87 @@
+---
+layout: post
+title: WordPress to Rails (1) schema and scaffold
+categories:
+- Computing
+tags:
+- Rails
+- WordPress
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '2'
+---
+<p>I'm attempting to move this blog from <a href="http://wordpress.org/">WordPress</a> to <a href="http://rubyonrails.org/">Rails</a>. Why? Because I'm learning Rails!</p>
+<p>Step one in the transition is to build a Rails app that can make use of an existing WordPress database. The following seems to work...</p>
+<p>First, create a Rails app (using MySQL for the database), then import the WordPress database into the Rails app database:</p>
+<pre>cd /path/to/folder/with/wordpress/mysql/file/in/
+mysql -u root
+use my_app_development;
+source wp_database_exported_from_mysql.sql
+quit</pre>
+<p>Next, update the schema in the app</p>
+<pre>rake db:schema:dump</pre>
+<p>Next (with a bit of help from <a href="https://github.com/frenesim/schema_to_scaffold">schema_to_scaffold</a>), generate the scaffold to link the app to the database. These commands, followed by lines to be added to the corresponding model files, seem to do the trick, for the <a href="http://codex.wordpress.org/Database_Description">default WordPress database structure</a>:<br />
+<!--more-->
+<pre>rails generate scaffold CommentMeta meta_id:integer comment_id:integer meta_key:string meta_value:text --skip-migration
+  self.primary_key = 'meta_id'
+  set_table_name 'wp_commentmeta'
+
+rails generate scaffold Comment comment_ID:integer comment_post_ID:integer comment_author:text comment_author_email:string comment_author_url:string comment_author_IP:string comment_date:datetime comment_date_gmt:datetime comment_content:text comment_karma:integer comment_approved:string comment_agent:string comment_type:string comment_parent:integer user_id:integer comment_subscribe:string --skip-migration
+  self.primary_key = 'comment_ID'
+  set_table_name 'wp_comments'
+
+rails generate scaffold Link link_id:integer link_url:string link_name:string link_image:string link_target:string link_category:integer link_description:string link_visible:string link_owner:integer link_rating:integer link_updated:datetime link_rel:string link_notes:text link_rss:string --skip-migration
+  self.primary_key = 'link_id'
+  set_table_name 'wp_links'
+
+rails generate scaffold Option option_id:integer option_name:string option_value:text autoload:string --skip-migration
+  self.primary_key = 'option_id'
+  set_table_name 'wp_options'
+
+rails generate scaffold PostMeta meta_id:integer post_id:integer meta_key:string meta_value:text --skip-migration
+  self.primary_key = 'meta_id'
+  set_table_name 'wp_postmeta'
+
+rails generate scaffold Post ID:integer post_author:integer post_date:datetime post_date_gmt:datetime post_content:text post_title:text post_category:integer post_excerpt:text post_status:string comment_status:string ping_status:string post_password:string post_name:string to_ping:text pinged:text post_modified:datetime post_modified_gmt:datetime post_content_filtered:text post_parent:integer guid:string menu_order:integer post_type:string post_mime_type:string comment_count:integer --skip-migration
+  self.primary_key = 'ID'
+  set_table_name 'wp_posts'
+
+rails generate scaffold TermRelationship object_id:integer term_taxonomy_id:integer term_order:integer --skip-migration
+  set_table_name 'wp_term_relationships'
+
+rails generate scaffold TermTaxonomy term_taxonomy_id:integer term_id:integer taxonomy:string description:text parent:integer count:integer --skip-migration
+  self.primary_key = 'term_taxonomy_id'
+  set_table_name 'wp_term_taxonomy'
+
+rails generate scaffold Term term_id:integer name:string slug:string term_group:integer --skip-migration
+  self.primary_key = 'term_id'
+  set_table_name 'wp_terms'
+
+rails generate scaffold UserMeta umeta_id:integer user_id:integer meta_key:string meta_value:text --skip-migration
+  self.primary_key = 'umeta_id'
+  set_table_name 'wp_usermeta'
+
+rails generate scaffold User ID:integer user_login:string user_pass:string user_nicename:string user_email:string user_url:string user_registered:datetime user_activation_key:string user_status:integer display_name:string --skip-migration
+  self.primary_key = 'ID'
+  set_table_name 'wp_users'</pre>
+<p>Then, for some instant gratification, make a controller for the blog:</p>
+<pre>rails generate controller blog index</pre>
+<p>Set this as the root page, by adding to config/routes.rb:</p>
+<pre>root :to =&gt; 'blog#index', :as =&gt; 'blog'</pre>
+<p>In the Blog model, put:</p>
+<pre>scope :published_posts, where(:post_status =&gt; 'publish', :post_type =&gt; 'post').order('post_date DESC')</pre>
+<p>In BlogController, put:</p>
+<pre>def index
+  @posts = Post.published_posts
+end</pre>
+<p>And in the view for the blog index, put:</p>
+<pre>&lt;% @posts.each do |post| %&gt;
+  &lt;div class="entry"&gt;
+    &lt;h2&gt;&lt;%= post.post_title %&gt;&lt;/h2&gt;
+    &lt;p&gt;&lt;%= post.post_date.strftime('%d %h %Y') %&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;%= sanitize(post.post_content) %&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;% end %&gt;</pre>
+<p>Lots more work to do, but it's a start!</p>
