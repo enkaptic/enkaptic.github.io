@@ -1,0 +1,211 @@
+/* Astronomy Centre Style Sheet
+ * Contents:
+   * Positioning
+   * Colours
+*/
+
+/***************/
+/* Positioning */
+/***************/
+body {
+ position: absolute;
+ left: 0;
+ text-align: justify;
+ width: 98%;
+}
+@media all {  /* Hide from Netscape 4 */
+ body {
+  font-family: helvetica,arial,sans-serif;
+  line-height: 1.3em;
+ }
+}
+div.main {
+ position: absolute;
+ left: 180px;
+ top: 0px;
+ /* This next bit for IE6
+    602 = 400 + 180 + 10 + 10 (padding) + a bit for rounding
+    858 = 660 + 180 + 10 + 10 (padding) - a bit for rounding
+    202 = 180 + 10 + 10 + 2 ("auto" doesn't work)
+ */
+ width: expression(document.body.clientWidth < 602? "400px" : document.body.clientWidth > 858? "660px" : document.body.clientWidth-202 
+);
+ max-width: 660px;
+ min-width: 400px;
+ padding: 10px;
+}
+h1 {
+ text-align: center;
+ line-height: 1em;
+}
+h2 {
+ text-align: left;
+}
+table {
+ border-style: hidden;
+}
+table[rules=rows] tr {
+ border-top: 1px solid;
+}
+table[rules=rows] {
+ border-collapse: collapse;
+ border-top: hidden;
+ border: none;
+}
+table.center {
+ margin-left:auto;
+ margin-right:auto;
+ text-align: center;
+}
+td {
+ text-align: left;
+}
+ul.navbar li {
+ list-style: none;
+}
+td.logo{
+text-align:center;
+width=20%;
+}
+
+th {
+ font-size: larger;
+ padding-top: 1em;
+ font-weight: normal;
+}
+th.left {
+ padding-top: 0;
+ text-align: right;
+ padding-right: 1em;
+}
+img.center {
+ margin-left:auto;
+ margin-right:auto;
+ display: block;
+ text-align:center;
+}
+img.right {
+ float: right;
+ padding-left: 1em;
+ padding-bottom: 0.5em;
+}
+img.left {
+ float: left;
+ padding-right: 1em;
+ padding-bottom: 0.5em;
+}
+ul.navbar {
+ list-style-type: none;
+ padding: 0 0 0 0;
+ margin: 0;
+ position: fixed;
+ top: 10px;
+ left: 0px;
+ width: 180px;
+ height: 100%;
+ text-align: left;
+ line-height: 1.2em;
+}
+ul.navbar li {
+ margin: 0;
+ padding: 2px 5px 1px 15px;
+ text-indent: -10px;
+}
+address {
+ font-size: smaller;
+ font-style: normal;
+ text-align: center;
+ margin-top: 1em;
+ line-height: 1em;
+}
+a img {
+ border: none;
+}
+ul.navbar li.image {
+ padding: 0;
+ margin: 0;
+ border: none;
+ text-indent: 0;
+}
+ul.navbar li a {
+ display: block;
+ text-decoration: none;
+ padding: 0;
+}
+div.opening {
+ text-align: center;
+ font-size: larger;
+}
+:link {
+ text-decoration: none;
+}
+:visited {
+ text-decoration: none;
+}
+a :link:hover, a :visited:hover {
+ text-decoration: underline;
+}
+:link:active, :visited:active {
+ text-decoration: underline;
+}
+th.head {
+text-align:center;
+}
+
+
+/***********/
+/* Colours */
+/***********/
+@media all {  /* Hide from Netscape 4 */
+ body {
+  font-family: helvetica,arial,sans-serif;
+  line-height: 1.3em;
+  background-color: white;  /* Sussex Secondary, 81937D */
+ }
+}
+ul.navbar {
+ background: #000066;
+}
+div.main {
+ color: #003035;  /* "Sussex Flint" 003035 */
+}
+@media all {  /* Hide from Netscape 4 */
+ div.main {
+  background-color: white;
+ }
+}
+h1, h2, th {
+ color: #BF2A8F;  /* Or 990066; Scitech 7B0F70; Scitech web BF2A8F */
+}
+:link {
+ color: blue;
+}
+:visited {
+ color: green;
+}
+:link:active, :visited:active {
+ color: #BF2A8F;
+}
+ul.navbar :link {
+ color: #00ffff;
+}
+ul.navbar :visited {
+ color: #33ff66;
+}
+ul.navbar li:hover {
+ background: black;
+}
+ul.navbar :link:active, ul.navbar :visited:active{
+ color: #336633;
+}
+a img {
+ color: silver;  /* For Netscape 4 */
+}
+ul.navbar li {
+ background: #000066;
+}
+ul.navbar li.image {
+ background: #000066;
+}
+
+
