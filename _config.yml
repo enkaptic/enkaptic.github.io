@@ -1,5 +1,6 @@
 name: Enkaptic
 description: Anthony Smith's Software Site
+url: http://enkaptic.co.uk
 markdown: redcarpet
 pygments: true
 exclude: [README.md]
