@@ -1,0 +1,21 @@
+---
+layout: post
+title: WordPress to Jekyll
+---
+<p>Change of plan: I'm moving this site not from WordPress to Rails, but from WordPress to <a href="http://jekyllrb.com/">Jekyll</a>.</p>
+<p>It was kind of fun developing a blog from scratch in Rails, but it's taking too long to get it finished, and I'd rather use the time for other things. Jekyll is a static blogging system built in Ruby. It's simple, powerful, and free to host via <a href="http://pages.github.com/">GitHub Pages</a>.</p>
+<p>Here are the very simple steps I've taken to migrate:</p>
+<ol>
+<li><a href="http://pages.github.com/">Create a new repository on GitHub</a></li>
+<li><a href="http://jekyllrb.com/">Create a new Jekyll site</a> and push it to the GitHub repository</li>
+<li><a href="http://import.jekyllrb.com/">Import data from WordPress</a></li>
+<li>Fetch the uploads (images), change the URLs for the images, move the pages to page-name/index.html, set up permalinks and pages</li>
+<li>Add LaTeX (<a href="http://docs.mathjax.org/en/latest/start.html#mathjax-cdn">a couple of lines of javascript</a>)</li>
+<li><a href="https://github.com/snaptortoise/jekyll-rss-feeds/blob/master/feed.xml">Add a feed</a> (call it feed/index.html, which is a bit messy but seems to work)</li>
+<li>Add <a href="http://getbootstrap.com/getting-started/">Bootstrap</a> to make the page look reasonable (use Bootstrap CDN, dead easy)</li>
+<li>Pagination</li>
+<li>Post excerpts (based on <a href="http://www.jacquesf.com/2011/03/creating-excerpts-in-jekyll-with-wordpress-style-more-html-comments/">this</a>)</li>
+<li>Use <a href="https://disqus.com/">Disqus</a> for comments</li>
+<li>And a few other odds and ends</li>
+</ol>
+<p>The site isn't quite live, but <a href="https://github.com/enkaptic/enkaptic.github.io">you can look at the repository on GitHub</a>.</p>
