@@ -6,8 +6,6 @@ layout: default
   <a href="/"><h1>Enkaptic <small>Anthony Smith's software site</small></h1></a>
 </div>
 
-<p><em>This site is gradually being migrated from <a href="http://www.anthonysmith.me.uk/research">Anthony Smith's Research Blog</a>. You might also like to visit my personal blog, <a href="http://www.anthonysmith.me.uk/">www.anthonysmith.me.uk</a>.</em></p>
-
 {% for post in paginator.posts %}
   <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
   <p>{{ post.date | date: "%-d %b %Y" }} | <a href="{{ post.url }}#disqus_thread" data-disqus-identifier="{{ post.url }}">Comments</a></p>
