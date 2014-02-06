@@ -4,7 +4,7 @@ layout: none
 <?xml version="1.0" encoding="UTF-8"?>{% capture src_url %}src=&quot;{{ site.url }}/{% endcapture %}{% capture href_url %}href=&quot;{{ site.url }}/{% endcapture %}
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>{{ site.name | xml_escape }}</title>
+    <title>{{ site.name | xml_escape }}{% if site.description %}: {{ site.description | xml_escape }}{% endif %}</title>
     <description>{% if site.description %}{{ site.description | xml_escape }}{% endif %}</description>    
     <link>{{ site.url }}</link>
     <atom:link href="{{ site.url }}/feed/" rel="self" type="application/rss+xml" />
