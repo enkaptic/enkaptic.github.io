@@ -25,7 +25,7 @@ Biggest change has been the introduction of permalinks, and making it possible t
 def self.find_by_permalink(permalink)
   year, month, day, name = permalink.split('/')
   name ||= ''
-  find(:first, :conditions =&gt; ["YEAR(post_date) = ? AND MONTH(post_date) = ? AND DAYOFMONTH(post_date) = ? AND post_name = ?", year.to_i, month.to_i, day.to_i, name])
+  find(:first, :conditions => ["YEAR(post_date) = ? AND MONTH(post_date) = ? AND DAYOFMONTH(post_date) = ? AND post_name = ?", year.to_i, month.to_i, day.to_i, name])
 end
 
 def to_param
@@ -42,8 +42,8 @@ Thanks to the author of <a href="http://www.dzone.com/snippets/use-contents-word
 Then in <code>routes.rb</code>, I have:
 
 {% highlight ruby %}
-resources :posts, :only =&gt; [:index, :new, :create]
-resources :posts, :only =&gt; [:show, :update, :destroy, :edit], :path =&gt; '', :id =&gt; /\d{4}\/\d{2}\/\d{2}(\/[0-9a-z\-_]+)?/
+resources :posts, :only => [:index, :new, :create]
+resources :posts, :only => [:show, :update, :destroy, :edit], :path => '', :id => /\d{4}\/\d{2}\/\d{2}(\/[0-9a-z\-_]+)?/
 {% endhighlight %}
 
 This preserves <code>mydomain.com/posts</code> and <code>mydomain.com/posts/new</code> URLs for listing and creating posts, but allows <code>mydomain.com/2013/09/04/my-post</code> as a permalink for the post itself (allowing lower-case letters, numbers, hyphens and underscores).

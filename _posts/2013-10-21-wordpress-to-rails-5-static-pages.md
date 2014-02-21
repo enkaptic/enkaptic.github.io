@@ -26,9 +26,9 @@ First, in the <code>Post</code> model, a different permalink is needed for stati
 Then, also in the <code>Post</code> model, I have several scopes:
 
 {% highlight ruby %}
-  scope :published_posts, where(:post_status =&gt; 'publish', :post_type =&gt; 'post').order('post_date DESC')
-  scope :published_pages, where(:post_status =&gt; 'publish', :post_type =&gt; 'page')
-  scope :pages, where(:post_type =&gt; 'page')
+  scope :published_posts, where(:post_status => 'publish', :post_type => 'post').order('post_date DESC')
+  scope :published_pages, where(:post_status => 'publish', :post_type => 'page')
+  scope :pages, where(:post_type => 'page')
   scope :not_pages, where('post_type != page')
 {% endhighlight %}
 
@@ -37,21 +37,21 @@ Then two different methods to find posts, depending on whether the user is logge
 {% highlight ruby %}
   def self.find_by_permalink(permalink)
     if permalink !~ /\//
-      pages.find(:first, :conditions =&gt; ["post_name = ?", permalink])
+      pages.find(:first, :conditions => ["post_name = ?", permalink])
     else      
       year, month, day, name = permalink.split('/')
       name ||= ''
-      not_pages.find(:first, :conditions =&gt; ["YEAR(post_date) = ? AND MONTH(post_date) = ? AND DAYOFMONTH(post_date) = ? AND post_name = ?", year.to_i, month.to_i, day.to_i, name])
+      not_pages.find(:first, :conditions => ["YEAR(post_date) = ? AND MONTH(post_date) = ? AND DAYOFMONTH(post_date) = ? AND post_name = ?", year.to_i, month.to_i, day.to_i, name])
     end
   end
 
   def self.find_published_by_permalink(permalink)
     if permalink !~ /\//
-      published_pages.find(:first, :conditions =&gt; ["post_name = ?", permalink])
+      published_pages.find(:first, :conditions => ["post_name = ?", permalink])
     else
       year, month, day, name = permalink.split('/')
       name ||= ''
-      published_posts.find(:first, :conditions =&gt; ["YEAR(post_date) = ? AND MONTH(post_date) = ? AND DAYOFMONTH(post_date) = ? AND post_name = ?", year.to_i, month.to_i, day.to_i, name])
+      published_posts.find(:first, :conditions => ["YEAR(post_date) = ? AND MONTH(post_date) = ? AND DAYOFMONTH(post_date) = ? AND post_name = ?", year.to_i, month.to_i, day.to_i, name])
     end
   end
 {% endhighlight %}
@@ -69,7 +69,7 @@ Then, in <code>PostController</code>, the <code>show</code> method becomes a bit
         # Check if post _would_ be visible if logged in; ask to log in if so
         if Post.find_by_permalink(params[:id])
           session[:return_to] = request.url
-          redirect_to login_url, :notice =&gt; "Please log in"
+          redirect_to login_url, :notice => "Please log in"
           return
         else
           not_found
