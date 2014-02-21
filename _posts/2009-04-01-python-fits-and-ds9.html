@@ -9,16 +9,20 @@ tags:
 - visualization
 ---
 <p>Here's an easy way to display <a href="http://heasarc.gsfc.nasa.gov/docs/heasarc/fits.html">FITS</a> images (or any array) in <a href="http://hea-www.harvard.edu/RD/ds9/">DS9</a> using <a href="http://python.org/">Python</a> (with <a href="http://www.stsci.edu/resources/software_hardware/pyfits">PyFITS</a>, <a href="http://numpy.scipy.org/">NumPy</a> and <a href="http://stsdas.stsci.edu/numdisplay/">Numdisplay</a>, which is part of <a href="http://www.stsci.edu/resources/software_hardware/pyraf/stsci_python/">stsci_python</a>). First launch DS9, then in Python:</p>
-<pre lang="python">import numdisplay
+{% highlight python %}
+import numdisplay
 import pyfits
 arr = pyfits.getdata('file.fits')
-numdisplay.display(arr)</pre>
+numdisplay.display(arr)
+{% endhighlight %}
 <p>Easy!</p>
 <p>Alternatively, the <a href="http://www.astro.rug.nl/software/kapteyn/">Kapteyn package</a> seems excellent, and uses Python's <a href="http://matplotlib.sourceforge.net/">matplotlib</a> for displaying images. <del>It requires <a href="http://www.atnf.csiro.au/people/mcalabre/WCS/">WCSLIB</a> to run, though, so the installation process is a bit longer</del> [update: apparently that bit is no longer true - 17 Oct 2011].</p>
 <p>A third option is to use <a href="http://code.google.com/p/python-sao/">python-sao</a>:</p>
-<pre lang="python">import pysao
+{% highlight python %}
+import pysao
 import pyfits
 ds9 = pysao.ds9()
 f = pyfits.open('file.fits')
-ds9.view(f[0])</pre>
+ds9.view(f[0])
+{% endhighlight %}
 <p>Easy again! And the WCS information is preserved, which doesn't seem to be the case with Numdisplay.</p>

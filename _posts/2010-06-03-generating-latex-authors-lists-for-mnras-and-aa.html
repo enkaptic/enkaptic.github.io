@@ -11,7 +11,8 @@ tags:
 ---
 <p>Okay, a bit boring, but as <a href="/2010/05/07/mnras-line-wrapping-in-authors-lists/">promised</a>, here are some Python functions to generate LaTeX source for long authors lists for MNRAS and A&amp;A.</p>
 <p><!--more-->First, a small utility:</p>
-<pre lang="python">def getSortedInstituteCodes(authorList, authorInstituteCodes):
+{% highlight python %}
+def getSortedInstituteCodes(authorList, authorInstituteCodes):
     """Return a list of institute codes, in the correct order for authorList.
 
     authorList = ["J.~Bloggs", "A.N.~Other"]
@@ -25,9 +26,11 @@ tags:
         for code in codes:
             if not code in instituteCodes:
                 instituteCodes.append(code)
-    return instituteCodes</pre>
+    return instituteCodes
+{% endhighlight %}
 <p>then the function for MNRAS:</p>
-<pre lang="python">def getAuthorsStringMNRAS(authorList, authorInstituteCodes, institutesTex,
+{% highlight python %}
+def getAuthorsStringMNRAS(authorList, authorInstituteCodes, institutesTex,
                           authorEmails):
     """Return a string containing LaTeX for MNRAS authors list.
 
@@ -76,9 +79,11 @@ tags:
                                     for iInst in range(len(instituteCodes))])
     authorsString += '}}\n'
 
-    return authorsString</pre>
+    return authorsString
+{% endhighlight %}
 <p>and the function for A&amp;A:</p>
-<pre lang="python">def getAuthorsStringAA(authorList, authorInstituteCodes, institutesTex,
+{% highlight python %}
+def getAuthorsStringAA(authorList, authorInstituteCodes, institutesTex,
                        authorEmails):
     """Return a string containing LaTeX for A&A authors list.
 
@@ -133,5 +138,6 @@ tags:
     authorsString += '\n\and '.join(instituteEmailList)
     authorsString += '}\n'
 
-    return authorsString</pre>
+    return authorsString
+{% endhighlight %}
 <p>Anyone still reading?</p>

@@ -7,23 +7,35 @@ tags:
 - Rails
 - WordPress
 ---
-<p>WordPress lumps posts and static pages together in one database table, but they need to be handled quite differently.</p>
-<p>At least for the time being, I'm leaving them in the same table.</p>
-<p>First, in the <code>Post</code> model, a different permalink is needed for static pages and for posts:</p>
-<pre>  def permalink
+WordPress lumps posts and static pages together in one database table, but they need to be handled quite differently.
+
+At least for the time being, I'm leaving them in the same table.
+
+First, in the <code>Post</code> model, a different permalink is needed for static pages and for posts:
+
+{% highlight ruby %}
+  def permalink
     if post_type == 'page'
       post_name
     else
       post_date.strftime("%Y/%m/%d") + (post_name.empty? ? '' : "/#{post_name}")
     end
-  end</pre>
-<p>Then, also in the <code>Post</code> model, I have several scopes:</p>
-<pre>  scope :published_posts, where(:post_status =&gt; 'publish', :post_type =&gt; 'post').order('post_date DESC')
+  end
+{% endhighlight %}
+
+Then, also in the <code>Post</code> model, I have several scopes:
+
+{% highlight ruby %}
+  scope :published_posts, where(:post_status =&gt; 'publish', :post_type =&gt; 'post').order('post_date DESC')
   scope :published_pages, where(:post_status =&gt; 'publish', :post_type =&gt; 'page')
   scope :pages, where(:post_type =&gt; 'page')
-  scope :not_pages, where('post_type != page')</pre>
-<p>Then two different methods to find posts, depending on whether the user is logged in or not (see below):</p>
-<pre>  def self.find_by_permalink(permalink)
+  scope :not_pages, where('post_type != page')
+{% endhighlight %}
+
+Then two different methods to find posts, depending on whether the user is logged in or not (see below):
+
+{% highlight ruby %}
+  def self.find_by_permalink(permalink)
     if permalink !~ /\//
       pages.find(:first, :conditions =&gt; ["post_name = ?", permalink])
     else      
@@ -41,9 +53,13 @@ tags:
       name ||= ''
       published_posts.find(:first, :conditions =&gt; ["YEAR(post_date) = ? AND MONTH(post_date) = ? AND DAYOFMONTH(post_date) = ? AND post_name = ?", year.to_i, month.to_i, day.to_i, name])
     end
-  end</pre>
-<p>Then, in <code>PostController</code>, the <code>show</code> method becomes a bit more advanced (or messy):</p>
-<pre>  def show
+  end
+{% endhighlight %}
+
+Then, in <code>PostController</code>, the <code>show</code> method becomes a bit more advanced (or messy):
+
+{% highlight ruby %}
+  def show
     # Show all posts if logged in, otherwise restrict to published posts
     if User.find_by_ID(session[:user_id])
       @post = Post.find_by_permalink(params[:id]) || not_found
@@ -61,11 +77,21 @@ tags:
       end
     end
     ...
-  end</pre>
-<p>The <code>not_found</code> method is in <code>ApplicationController</code> (see <a href="http://stackoverflow.com/questions/2385799/how-to-redirect-to-a-404-in-rails/7099193">here</a>):</p>
-<pre>  def not_found
+  end
+{% endhighlight %}
+
+The <code>not_found</code> method is in <code>ApplicationController</code> (see <a href="http://stackoverflow.com/questions/2385799/how-to-redirect-to-a-404-in-rails/7099193">here</a>):
+
+{% highlight ruby %}
+  def not_found
     raise ActionController::RoutingError.new('Not Found')
-  end</pre>
-<p><code>routes.rb</code> needs to be changed, to route (say) <code>.../about</code> to the appropriate page, with the following line going <em>after</em> all the other routing information (but before the <code>root</code> statement):</p>
-<pre>  resources :posts, :only => [:show, :update, :destroy, :edit], :path => '', :id => /\d{4}\/\d{2}\/\d{2}(\/[0-9a-z\-_]+)?|[0-9a-z\-_]+/</pre>
-<p>And there are some changes to the post view, to hide details that are not relevant to static pages (such as date and comments).</p>
+  end
+{% endhighlight %}
+
+<code>routes.rb</code> needs to be changed, to route (say) <code>.../about</code> to the appropriate page, with the following line going <em>after</em> all the other routing information (but before the <code>root</code> statement):
+
+{% highlight ruby %}
+  resources :posts, :only => [:show, :update, :destroy, :edit], :path => '', :id => /\d{4}\/\d{2}\/\d{2}(\/[0-9a-z\-_]+)?|[0-9a-z\-_]+/
+{% endhighlight %}
+
+And there are some changes to the post view, to hide details that are not relevant to static pages (such as date and comments).

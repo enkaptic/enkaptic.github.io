@@ -10,7 +10,8 @@ tags:
 ---
 <p>They're coming thick and fast now.</p>
 <p>Here's a Python function to accompany the <a href="/2009/09/04/on-the-normalization-of-prfs/">previous post</a>. It's not maximally efficient, but should make sense...</p>
-<pre lang="python">
+{% highlight python %}
+
 from scipy import stats
 def gaussian_pixel(minxy, maxxy, sigma, meanxy=(0.,0.), norm=None):
     """Return the value of a pixel sampling a 2D Gaussian,
@@ -26,4 +27,5 @@ def gaussian_pixel(minxy, maxxy, sigma, meanxy=(0.,0.), norm=None):
         - (1 - stats.erfc((x1 - x0) / math.sqrt(2) / sigma)) / 2.) * (
         (1 - stats.erfc((y2 - y0) / math.sqrt(2) / sigma)) / 2.
         - (1 - stats.erfc((y1 - y0) / math.sqrt(2) / sigma)) / 2.)
-</pre>
+
+{% endhighlight %}
