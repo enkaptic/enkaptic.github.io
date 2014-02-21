@@ -12,7 +12,7 @@ meta:
 ---
 <em>This is the "About" page on my software development site. I also have an <a href="http://www.anthonysmith.me.uk/about/">"About"</a> page on my <a href="http://www.anthonysmith.me.uk/">personal site</a>.</em>
 
-<em>You might also like to view my [LinkedIn Profile](http://www.linkedin.com/profile/view?id=96837679).</em>
+<em>You might also like to view my [LinkedIn Profile](http://www.linkedin.com/in/anthonyjamessmith).</em>
 
 Since the summer of 2013, I've been working on web development with <a href="http://rubyonrails.org/">Ruby on Rails</a>.
 
