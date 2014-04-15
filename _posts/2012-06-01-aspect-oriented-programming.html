@@ -20,7 +20,6 @@ tags:
 <p>I'm going to give it a try with the Java development I'm working on. I'll let you know how it goes. It should be useful for testing, allowing me to keep track of how many times a particular method is executed, what the values of the parameters are, how much time is spent on different steps, and what is making it go wrong, for example.</p>
 <p>Fortunately, it's dead easy to get started. For Java, the most widely-used AOP extension is <a href="http://www.eclipse.org/aspectj/">AspectJ</a>. If you have a Java project in <a href="http://en.wikipedia.org/wiki/Eclipse_(software)">Eclipse</a>, simply install the <a href="http://www.eclipse.org/ajdt/downloads/">AspectJ Development Tools</a> plugin, convert the project to an AspectJ project, and that's it. Here's "Hello world" using an aspect:</p>
 {% highlight java %}
-{% raw %}
 public class HelloWorld {
     private void sayHello() {
         System.out.println("Hello");
@@ -39,7 +38,6 @@ public aspect World {
         System.out.println("World!");
     }
 }
-{% endraw %}
 {% endhighlight %}
 <p>The <code>sayHello</code> method executes, and then the aspect interrupts the execution and prints "World!".</p>
 <p>Part of the attraction of AOP to me is that it has resonances with the philosophy of <a href="http://en.wikipedia.org/wiki/Herman_Dooyeweerd">Herman Dooyeweerd</a>, who worked on a model of reality called the <a href="http://www.dooy.salford.ac.uk/asp.html">Theory of Aspects</a>, in which the whole of reality can be described in terms of (around) 15 (cross-cutting) <a href="http://www.dooy.salford.ac.uk/aspects.html">aspects</a>. In fact, I first heard of AOP via <a href="http://www.dooy.salford.ac.uk/using/aop.html">Andrew Basden's page on the topic</a>.</p>
