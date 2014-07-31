@@ -36,7 +36,7 @@ end
 Next, with the uploaded files in that new folder, the database needed to be migrated to change the URLs for the uploaded files. The following migration seems to work (and can be rolled back, as long as the uploaded files shares the same year and month as the post that refers to it):
 
 {% highlight ruby %}
-class ChangeWordpressUploadsUrls &lt; ActiveRecord::Migration
+class ChangeWordpressUploadsUrls < ActiveRecord::Migration
   def up
     Post.all.each do |p|
       p.post_content = p.post_content.gsub(/http:\/\/www\.anthonysmith\.me\.uk\/research\/wp-content\/uploads\/\d{4}\/\d{2}\/([0-9a-zA-Z\-_.]+)/, '/uploads/')
