@@ -22,17 +22,7 @@
 
     <!-- syntax highlighting CSS -->
     <link rel="stylesheet" href="/css/syntax.css">
-
-    <style type="text/css">
-      body {
-        padding-top: 50px;
-      }
-      pre code {
-        overflow-x: auto;
-        word-wrap: normal;
-        white-space: pre;
-      }
-    </style>
+    <link rel="stylesheet" href="/css/enkaptic.css">
 
     <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
@@ -48,7 +38,7 @@
 
   <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-custom navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -64,15 +54,21 @@
             <li class="active"><a href="/software/">Software</a></li>
             <li class="active"><a href="/astronomy/">Astronomy</a></li>
             <li class="active"><a href="/contact/">Contact</a></li>
-            <li class="active"><a href="/feed/">RSS Feed</a></li>
+            <li class="active"><a class="a2a_dd" href="http://www.addtoany.com/subscribe?linkurl={{ site.url | append: '/feed/' | cgi_escape }}&amp;linkname=">Subscribe<span class="caret"></span></a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
 
-    <div class="container">
-      {{ content }}
-    </div>
+    <!-- AddToAny BEGIN -->
+    <script type="text/javascript">
+      var a2a_config = a2a_config || {};
+      a2a_config.linkurl = "{{ site.url }}/feed/";
+    </script>
+    <script type="text/javascript" src="//static.addtoany.com/menu/feed.js"></script>
+    <!-- AddToAny END -->
+
+    {{ content }}
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

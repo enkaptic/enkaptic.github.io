@@ -1,12 +1,16 @@
 ---
 layout: default
 ---
-
-<div class="page-header">
-  <a href="/"><h1>{{ site.name }} <small>{{ site.description }}</small></h1></a>
+<div class="container">
+  <div class="page-header">
+    <a href="/"><h1>{{ site.name }} <small>{{ site.description }}</small></h1></a>
+  </div>
 </div>
 
+<hr />
+
 {% for post in paginator.posts %}
+<div class="container">
   <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
   <p>{{ post.date | date: "%-d %b %Y" }} | <a href="{{ post.url }}#disqus_thread" data-disqus-identifier="{{ post.url }}">Comments</a></p>
 {% if post.content contains "<!--more-->" %}
@@ -14,30 +18,39 @@ layout: default
 {% else %}
   {{ post.content }}
 {% endif %}
+</div>
+
+<hr />
 {% endfor %}
 
-<ul class="pagination">
-  {% if paginator.previous_page %}
-    <li class="previous"><a rel="previous" href="{{ paginator.previous_page_path | replace: 'index.html', '' }}">&#8592; Previous</a></li>
-  {% else %}
-    <li class="prev disabled"><span>&#8592; Previous</span></li>
-  {% endif %}
-  {% for x in (1..paginator.total_pages) %}
-    {% if paginator.page == x %}
-      <li class="active"><span>{{ x }}</span></li>
-    {% elsif paginator.page == x - 1 %}
-      <li><a rel="previous" href="{{ paginator.previous_page_path }}">{{ x }}</a></li>
-    {% elsif paginator.page == x + 1 %}
-      <li><a rel="next" href="/page/{{ x }}/">{{ x }}</a></li>
-    {% elsif x == 1 %}
-      <li><a href="/">{{ x }}</a></li>
+<div class="container">
+  <ul class="pagination">
+    {% if paginator.previous_page %}
+      <li class="previous"><a rel="previous" href="{{ paginator.previous_page_path | replace: 'index.html', '' }}">&#8592; Previous</a></li>
     {% else %}
-      <li><a href="/page/{{ x }}/">{{ x }}</a></li>
+      <li class="prev disabled"><span>&#8592; Previous</span></li>
     {% endif %}
-  {% endfor %}
-  {% if paginator.next_page %}
-    <li class="next"><a rel="next" href="{{ paginator.next_page_path }}">Next &#8594;</a></li>
-  {% else %}
-    <li class="next disabled"><span>Next &#8594;</span></li>
-  {% endif %}
-</ul>
+    {% for x in (1..paginator.total_pages) %}
+      {% if paginator.page == x %}
+        <li class="active"><span>{{ x }}</span></li>
+      {% elsif paginator.page == x - 1 %}
+        <li><a rel="previous" href="{{ paginator.previous_page_path }}">{{ x }}</a></li>
+      {% elsif paginator.page == x + 1 %}
+        <li><a rel="next" href="/page/{{ x }}/">{{ x }}</a></li>
+      {% elsif x == 1 %}
+        <li><a href="/">{{ x }}</a></li>
+      {% else %}
+        <li><a href="/page/{{ x }}/">{{ x }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if paginator.next_page %}
+      <li class="next"><a rel="next" href="{{ paginator.next_page_path }}">Next &#8594;</a></li>
+    {% else %}
+      <li class="next disabled"><span>Next &#8594;</span></li>
+    {% endif %}
+  </ul>
+
+  {% include addtoany.html %}
+</div>
+
+<hr />
