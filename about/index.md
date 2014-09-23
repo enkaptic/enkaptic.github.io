@@ -10,10 +10,6 @@ meta:
   _edit_last: '2'
   _wp_page_template: default
 ---
-<em>This is the "About" page on my software development site. I also have an <a href="http://www.anthonysmith.me.uk/about/">"About"</a> page on my <a href="http://www.anthonysmith.me.uk/">personal site</a>.</em>
-
-<em>You might also like to view my [LinkedIn Profile](http://www.linkedin.com/in/anthonyjamessmith).</em>
-
 Since the summer of 2013, I've been working on web development with <a href="http://rubyonrails.org/">Ruby on Rails</a>.
 
 From October 2008 until June 2013 I was developing some software (Java/Jython) for the <a href="http://sci.esa.int/science-e/www/area/index.cfm?fareaid=16">Herschel Space Observatory</a>, which was launched in May 2009. One of my main responsibilities was to implement advanced methods of point source extraction for use on data from the <a href="http://pacs.ster.kuleuven.ac.be/">PACS</a> and <a href="http://www.spire.rl.ac.uk/">SPIRE</a> instruments on Herschel. I was doing this work first as a Research Fellow in Astronomy at Sussex University until July 2012, and since August 2012 I was working as a consultant with <a href="http://blueskyspectroscopy.com/">Blue Sky Spectroscopy</a>, working on the software for the spectrometer on SPIRE.
@@ -26,4 +22,9 @@ From 2002-2003 I studied for the new MSc in Cosmology at the University of Susse
 
 Prior to starting the MSc, I was at <a href="http://www.jesus.cam.ac.uk/">Jesus College</a>, <a href="http://www.cam.ac.uk/">Cambridge</a>, where I gained a BA in <a href="http://www.maths.cam.ac.uk/">mathematics</a>.
 
-Personal page: <a href="http://www.anthonysmith.me.uk">www.anthonysmith.me.uk</a>.
+See also...
+
+* Personal page: <a href="http://www.anthonysmith.me.uk">www.anthonysmith.me.uk</a> (<a href="http://www.anthonysmith.me.uk/about/">about</a>)
+* Twitter: [@enkaptic](https://twitter.com/enkaptic)
+* GitHub: [anthonyjsmith](https://github.com/anthonyjsmith)
+* LinkedIn: [anthonyjamessmith](http://www.linkedin.com/in/anthonyjamessmith)
