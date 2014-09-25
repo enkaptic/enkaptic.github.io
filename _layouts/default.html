@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>{% if page.title %}{{ page.title}} | {% endif %}{{ site.name }}</title>
+    <title>{% if page.title %}{{ page.title}} | {% endif %}{{ site.name }} {{ site.twitter_name }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{{ site.description }}">
 
@@ -55,6 +55,7 @@
             <li class="active"><a href="/astronomy/">Astronomy</a></li>
             <li class="active"><a href="/contact/">Contact</a></li>
             <li class="active"><a class="a2a_dd" href="http://www.addtoany.com/subscribe?linkurl={{ site.url | append: '/feed/' | cgi_escape }}&amp;linkname=">Subscribe<span class="caret"></span></a></li>
+            <li class="active"><a href="http://twitter.com/enkaptic"><img src="/assets/Twitter_logo_white.png" width="22" height="18"></a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

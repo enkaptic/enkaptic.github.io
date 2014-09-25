@@ -1,4 +1,5 @@
 name: Enkaptic
+twitter_name: "@enkaptic"
 description: Anthony Smith's software site
 url: http://www.enkaptic.co.uk
 exclude: [README.md]
