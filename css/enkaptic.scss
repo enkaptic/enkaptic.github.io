@@ -46,3 +46,14 @@ $navbar-hover-color: #2a6496;
 .navbar-custom .icon-bar {
     background-color:$navbar-hover-color;
 }
+
+/*
+ * Override Bootstrap's default container.
+ */
+
+@media (min-width: 1200px) {
+  .container {
+    width: 970px;
+  }
+}
+
