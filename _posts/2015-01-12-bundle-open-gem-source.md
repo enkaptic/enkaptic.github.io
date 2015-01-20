@@ -16,5 +16,7 @@ Thanks to [Justin Weiss](http://www.justinweiss.com/) for this tip, from his wee
 You can specify your favourite editor in your <code>~/.bash_profile</code> (or similar). E.g., for [Sublime Text](https://www.sublimetext.com/):
 
 {% highlight bash %}
-export EDITOR='subl'
+export EDITOR='subl -w'
 {% endhighlight %}
+
+(NB: <code>-w</code> makes it wait for the files to be closed before returning. This is worth doing, as some commands will pause until control returns, and then continue, for example, <code>git commit</code>.)
