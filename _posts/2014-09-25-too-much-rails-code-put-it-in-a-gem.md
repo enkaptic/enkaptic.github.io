@@ -53,7 +53,7 @@ gem 'my_gem', path: 'gems'
 Then run <code>bundle</code> in the app's root directory. (It will give some warning messages about the <code>gemspec</code>, but don't worry.) Then you can use the gem in your app. For example:
 
 {% highlight ruby %}
-MyModel < ActiveRecord::Base
+class MyModel < ActiveRecord::Base
   include MyGem
 end
 {% endhighlight %}
