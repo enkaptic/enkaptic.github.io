@@ -1,56 +1,56 @@
 ---
 layout: default
 ---
-<div class="container">
-  <div class="page-header">
-    <a href="/"><h1>{{ site.name }} <small>{{ site.description }}</small></h1></a>
-  </div>
-</div>
+<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<header class="intro-header" style="background-image: url('/assets/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1>{{ site.name }}</h1>
+                    <hr class="small">
+                    <span class="subheading">{{ site.description }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
 
-<hr />
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
 {% for post in paginator.posts %}
-<div class="container">
-  <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-  <p>{{ post.date | date: "%-d %b %Y" }} | <a href="{{ post.url }}#disqus_thread" data-disqus-identifier="{{ post.url }}">Comments</a></p>
-{% if post.content contains "<!--more-->" %}
-  {{ post.content | split: "<!--more-->" | first }}<p><a href="{{ post.url }}">More...</a></p>
-{% else %}
-  {{ post.content }}
-{% endif %}
-</div>
-
-<hr />
+                <div class="post-preview">
+                    <a href="{{ post.url }}">
+                        <h2 class="post-title">
+                            {{ post.title }}
+                        </h2>
+                    </a>
+                    <p class="post-meta">Posted by Anthony Smith on {{ post.date | date: "%-d %B %Y" }} | <a href="{{ post.url }}#disqus_thread" data-disqus-identifier="{{ post.url }}">Comments</a></p>
+                    {{ post.content }}
+                </div>
+                <hr>
 {% endfor %}
 
-<div class="container">
-  <ul class="pagination">
-    {% if paginator.previous_page %}
-      <li class="previous"><a rel="previous" href="{{ paginator.previous_page_path | replace: 'index.html', '' }}">&#8592; Previous</a></li>
-    {% else %}
-      <li class="prev disabled"><span>&#8592; Previous</span></li>
-    {% endif %}
-    {% for x in (1..paginator.total_pages) %}
-      {% if paginator.page == x %}
-        <li class="active"><span>{{ x }}</span></li>
-      {% elsif paginator.page == x - 1 %}
-        <li><a rel="previous" href="{{ paginator.previous_page_path }}">{{ x }}</a></li>
-      {% elsif paginator.page == x + 1 %}
-        <li><a rel="next" href="/page/{{ x }}/">{{ x }}</a></li>
-      {% elsif x == 1 %}
-        <li><a href="/">{{ x }}</a></li>
-      {% else %}
-        <li><a href="/page/{{ x }}/">{{ x }}</a></li>
-      {% endif %}
-    {% endfor %}
-    {% if paginator.next_page %}
-      <li class="next"><a rel="next" href="{{ paginator.next_page_path }}">Next &#8594;</a></li>
-    {% else %}
-      <li class="next disabled"><span>Next &#8594;</span></li>
-    {% endif %}
-  </ul>
+                {% include addtoany.html %}
 
-  {% include addtoany.html %}
-</div>
+                <!-- Pager -->
+                <ul class="pager">
+                    {% if paginator.previous_page %}
+                    <li class="previous">
+                        <a rel="previous" href="{{ paginator.previous_page_path | replace: 'index.html', '' }}">&larr; Newer Posts</a>
+                    </li>
+                    {% endif %}
+                    {% if paginator.next_page %}
+                    <li class="next">
+                        <a rel="next" href="{{ paginator.next_page_path }}">Older Posts &rarr;</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
 
-<hr />

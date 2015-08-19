@@ -1,27 +1,32 @@
 ---
 layout: default
 ---
-<div class="container">
-  <ul class="pager">
-    <li class="previous">
-      {% if page.previous %}<a href="{{page.previous.url}}">&larr; {{page.previous.title}}</a>{% endif %}
-    </li>
-    <li class="next">
-      {% if page.next %}<a href="{{page.next.url}}">{{page.next.title}} &rarr;</a>{% endif %}
-    </li>
-  </ul>
-</div>
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('/assets/post-bg.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>{{ page.title }}</h1>
+                        <span class="meta">Posted by Anthony Smith on {{ page.date | date: "%-d %B %Y" }} | <a href="#disqus_thread">Comments</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-<div class="container">
-  <h1>{{ page.title }}</h1>
-  <p class="meta">{{ page.date | date: "%-d %b %Y" }} | <a href="#disqus_thread">Comments</a></p>
-</div>
 
-<div class="container">
-  <div class="post">
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
   {{ content }}
   {% include addtoany.html %}
-  </div>
+
+
 
   {% if page.draft != true %}
   <div id="disqus_thread"></div>
@@ -44,4 +49,26 @@ layout: default
   {% else %}
   <i>Comments disabled for draft posts.</i>
   {% endif %}
-</div>
+
+                <hr>
+
+                    <!-- Pager -->
+                    <ul class="pager">
+                        {% if page.previous %}
+                        <li class="previous">
+                            <a rel="previous" href="{{ page.previous.url }}">&larr; {{page.previous.title}}</a>
+                        </li>
+                        {% endif %}
+                        {% if page.next %}
+                        <li class="next">
+                            <a rel="next" href="{{ page.next.url }}">{{page.next.title}} &rarr;</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+
