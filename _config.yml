@@ -2,7 +2,7 @@ name: Enkaptic
 twitter_name: "@enkaptic"
 description: Anthony Smith's software site
 url: http://www.enkaptic.co.uk
-exclude: [README.md]
+exclude: [README.md, CNAME, Gemfile, Gemfile.lock]
 permalink: /:year/:month/:day/:title/
 paginate: 10
 paginate_path: "page/:num/"
