@@ -396,3 +396,10 @@ img::-moz-selection {
 body {
   webkit-tap-highlight-color: #0085a1;
 }
+
+/* Make long lines of code scroll horizontally */
+pre code {
+  overflow-x: auto;
+  word-wrap: normal;
+  white-space: pre;
+}
