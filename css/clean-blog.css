@@ -41,7 +41,9 @@ a img:focus {
 }
 blockquote {
   color: #808080;
-  font-style: italic;
+}
+blockquote p:first-child {
+  margin-top: 0;
 }
 hr.small {
   max-width: 100px;
