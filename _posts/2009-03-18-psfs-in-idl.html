@@ -14,11 +14,11 @@ psf = airy_pattern(51, 51, 25, 25, 2./8.0)
 isurface, psf
 {% endhighlight %}
 <p>The output looks something like this:</p>
-<p><img class="alignnone size-full wp-image-179" title="PSF Airy pattern (StarFinder/IDL)" src="/assets/psf_airy.png" alt="PSF Airy pattern (StarFinder/IDL)" width="480" height="321" /></p>
+<p><img class="img-responsive" title="PSF Airy pattern (StarFinder/IDL)" src="/assets/psf_airy.png" alt="PSF Airy pattern (StarFinder/IDL)" /></p>
 <p>2. The <a href="http://idlastro.gsfc.nasa.gov/">IDL Astronomy User's Library</a> contains a routine, psf_gaussian, that produces a Gaussian PSF. To produce the same as above, the command would be:</p>
 {% highlight idl %}
 psf = psf_gaussian(npix=51, fwhm=8.0, /double)
 isurface, psf
 {% endhighlight %}
 <p>... which produces something like this:</p>
-<p><img class="alignnone size-full wp-image-180" title="PSF Gaussian (IDL Astronomy User's Library)" src="/assets/psf_gaussian.png" alt="PSF Gaussian (IDL Astronomy User's Library)" width="479" height="324" /></p>
+<p><img class="img-responsive" title="PSF Gaussian (IDL Astronomy User's Library)" src="/assets/psf_gaussian.png" alt="PSF Gaussian (IDL Astronomy User's Library)" /></p>
