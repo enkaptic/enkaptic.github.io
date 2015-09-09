@@ -107,7 +107,8 @@ hr.small {
   .navbar-custom.is-fixed {
     /* when the user scrolls down, we hide the header right above the viewport */
     position: fixed;
-    top: -67px; /* changed from 61px, not sure why */
+    /* fa-2x icon in navbar increases height from 60 to 66: increased top from 61 to 67 */
+    top: -67px;
     background-color: rgba(255, 255, 255, 0.9);
     border-bottom: 1px solid #f2f2f2;
     -webkit-transition: -webkit-transform 0.3s;
