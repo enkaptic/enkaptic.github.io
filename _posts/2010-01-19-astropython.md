@@ -1,9 +1,5 @@
 ---
 title: Astropython
-categories:
-- Computing
-tags:
-- Python
 ---
 You (both of you) might well be interested in the new <a href="http://www.astropython.org/">Astropython</a> site, which looks excellent. Here's <a href="http://www.astropython.org/about">the site's own description</a>:
 
