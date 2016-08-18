@@ -1,5 +1,4 @@
 ---
-layout: post
 title: WordPress to Rails (5) static pages
 categories:
 - Computing

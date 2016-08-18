@@ -1,7 +1,6 @@
 ---
 title: Too much Rails code? Put it in a gem!
 date: 2014-09-25 11:24:03 +0100
-layout: post
 ---
 If you extract some of your Rails code into a gem, and test the gem separately, this will _guarantee_ that the gem cannot depend on the rest of your application. This is a Good Thing: if everything can depend on everything else, you end up with a hideous tangled mess.
 

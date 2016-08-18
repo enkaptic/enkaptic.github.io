@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Rails architecture
 date: 2014-12-15 19:55:17 +0000
 ---

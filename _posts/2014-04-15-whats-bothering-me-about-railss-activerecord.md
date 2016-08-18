@@ -1,5 +1,4 @@
 ---
-layout: post
 title: What's bothering me about Rails's ActiveRecord
 ---
 {% highlight ruby %}

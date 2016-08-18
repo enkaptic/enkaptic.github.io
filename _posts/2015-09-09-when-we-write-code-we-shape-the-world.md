@@ -1,5 +1,4 @@
 ---
-layout: post
 title: When we write code, we shape the world
 date: 2015-09-09 08:33:46.571828000 +01:00
 ---

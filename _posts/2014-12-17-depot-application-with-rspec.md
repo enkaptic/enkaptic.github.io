@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Depot application with RSpec
 date: 2014-12-17 12:10:56.626928000 +00:00
 ---

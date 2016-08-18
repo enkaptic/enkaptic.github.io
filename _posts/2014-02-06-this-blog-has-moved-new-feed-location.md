@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'This blog has moved: NEW FEED LOCATION'
 ---
 I've moved this blog over to [Jekyll](http://jekyllrb.com/), and over to my new(ish) domain, [www.enkaptic.co.uk](http://www.enkaptic.co.uk/). Old links should keep redirecting... but not for very long!

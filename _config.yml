@@ -8,3 +8,17 @@ permalink: /:year/:month/:day/:title/
 paginate: 10
 paginate_path: "page/:num/"
 excerpt_separator: '' # https://github.com/jekyll/jekyll/issues/1401
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"

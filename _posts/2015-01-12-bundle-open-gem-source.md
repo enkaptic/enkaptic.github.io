@@ -1,5 +1,4 @@
 ---
-layout: post
 title: bundle open gem source
 date: 2015-01-12 12:41:24.966441000 +00:00
 ---

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: WordPress to Rails (4) uploads
 categories:
 - Computing
