@@ -6,7 +6,7 @@ twitter_name: "@enkaptic"
 description: Anthony Smith's software site
 url: http://www.enkaptic.co.uk
 exclude: [README.md, CNAME, Gemfile, Gemfile.lock]
-permalink: /:year/:month/:day/:title/
+permalink: pretty
 paginate: 10
 paginate_path: "page/:num/"
 excerpt_separator: '' # https://github.com/jekyll/jekyll/issues/1401

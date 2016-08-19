@@ -1,15 +1,5 @@
 ---
-layout: page
 title: About
-permalink: /about/
-categories: []
-tags: []
-status: publish
-type: page
-published: true
-meta:
-  _edit_last: '2'
-  _wp_page_template: default
 ---
 Since the summer of 2013, I've been working on web development with <a href="http://rubyonrails.org/">Ruby on Rails</a>.
 
