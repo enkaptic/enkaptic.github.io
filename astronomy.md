@@ -1,6 +1,16 @@
 ---
 title: Astronomy
 ---
+From 2008 to 2013, my astronomy work was mainly software development: see the [software page](/software/).
+
+Between October 2004 and September 2008 I worked with [Jon Loveday](http://astronomy.sussex.ac.uk/~loveday/) for a DPhil (PhD), _[A census of K-band galaxies from the UKIDSS Large Area Survey](/phdthesis.pdf)_ looking at hundreds of thousands of galaxies in near-[infrared](http://en.wikipedia.org/wiki/Infrared_astronomy) light. The main source of data for this project was a new survey, [UKIDSS](http://www.ukidss.org/). (Jon Loveday and I were at the telescope in [Hawaii](http://www.flickr.com/photos/63259851@N00/sets/) when the first UKIDSS survey observations were made in May 2005.) I also used data from [SDSS](http://www.sdss.org/) and [2MASS](http://www.ipac.caltech.edu/2mass/).
+
+The main results included a K-band luminosity function from UKIDSS (with redshifts from SDSS), along with the bivariate brightness distribution (number of galaxies per unit volume as a function of luminosity and surface brightness). See [this paper](http://adsabs.harvard.edu/abs/2009MNRAS.397..868S).
+
+From 2002-2003 I studied for the new MSc in Cosmology at the University of Sussex. Around half of my work that year was spent on my project, _[Braneworld Inflation](/mscthesis.pdf)_, supervised by [Andrew Liddle](http://astronomy.sussex.ac.uk/~andrewl/andrewl.html). If you want to know more, see [this paper](http://link.aps.org/abstract/PRD/v68/e061301) (or [here](http://uk.arxiv.org/abs/astro-ph/0307017)). Cosmology is the study of the Universe, so the MSc made me a **master of the universe**. In fact, I reckon (but am just about willing to be corrected) that I was the first person anywhere to have a masters degree entitled 'cosmology'. This therefore made me indisputably _[the](http://www.he-man.org/cartoon/cartoon.php?id=44)_[ master of the universe](http://www.he-man.org/cartoon/cartoon.php?id=44) for a year, as I'd wanted to be since I was very small.
+
+Prior to starting the MSc, I was at [Jesus College](http://www.jesus.cam.ac.uk/), [Cambridge](http://www.cam.ac.uk/), where I gained a BA in [mathematics](http://www.maths.cam.ac.uk/).
+
 ## Papers
 
 [Publications (ADS)](http://adsabs.harvard.edu/cgi-bin/nph-abs_connect?library&amp;libname=Publications&amp;libid=463761478a)

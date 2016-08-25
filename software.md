@@ -1,6 +1,15 @@
 ---
 title: Software
 ---
+From the summer of 2013 to the summer of 2016, I worked on various web-based projects using [Ruby on Rails](http://rubyonrails.org/).
+
+From October 2008 until June 2013 I developed some software (Java/Jython) for the [Herschel Space Observatory](http://sci.esa.int/science-e/www/area/index.cfm?fareaid=16), which was launched in May 2009. One of my main responsibilities was to implement advanced methods of point source extraction for use on data from the [PACS](http://pacs.ster.kuleuven.ac.be/) and [SPIRE](http://www.spire.rl.ac.uk/) instruments on Herschel. I was doing this work first as a Research Fellow in Astronomy at Sussex University until July 2012, and since August 2012 I was working as a consultant with [Blue Sky Spectroscopy](http://blueskyspectroscopy.com/), working on the software for the spectrometer on SPIRE.
+
+See also...
+
+* GitHub: [anthonyjsmith](https://github.com/anthonyjsmith)
+* LinkedIn: [anthonyjamessmith](http://www.linkedin.com/in/anthonyjamessmith)
+
 Random bits of code that may be useful to some people...
 
 [GitHub profile](https://github.com/anthonyjsmith/)
