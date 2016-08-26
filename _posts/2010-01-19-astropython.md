@@ -3,6 +3,7 @@ title: Astropython
 tags:
 - Astronomy
 - Computing
+redirect_to: http://www.anthonysmith.me.uk/2010/01/19/astropython/
 ---
 You (both of you) might well be interested in the new <a href="http://www.astropython.org/">Astropython</a> site, which looks excellent. Here's <a href="http://www.astropython.org/about">the site's own description</a>:
 

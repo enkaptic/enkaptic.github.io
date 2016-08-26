@@ -3,6 +3,7 @@ title: bundle open gem source
 tags:
 - Computing
 date: 2015-01-12 12:41:24.966441000 +00:00
+redirect_to: http://www.anthonysmith.me.uk/2015/01/12/bundle-open-gem-source/
 ---
 I didn't realise you could do this, from a Ruby or Rails project using [bundler](http://bundler.io/)/<code>Gemfile</code>:
 

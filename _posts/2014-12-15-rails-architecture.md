@@ -2,7 +2,8 @@
 title: Rails architecture
 tags:
 - Computing
-date: 2014-12-15 19:55:17 +0000
+date: 2014-12-15 19:55:17.000000000 +00:00
+redirect_to: http://www.anthonysmith.me.uk/2014/12/15/rails-architecture/
 ---
 Three thought-provoking talks about the architecture of a Rails application
 

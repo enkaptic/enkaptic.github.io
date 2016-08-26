@@ -2,6 +2,7 @@
 title: What's bothering me about Rails's ActiveRecord
 tags:
 - Computing
+redirect_to: http://www.anthonysmith.me.uk/2014/04/15/whats-bothering-me-about-railss-activerecord/
 ---
 {% highlight ruby %}
 class Product < ActiveRecord::Base

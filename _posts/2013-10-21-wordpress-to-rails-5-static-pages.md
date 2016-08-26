@@ -2,6 +2,7 @@
 title: WordPress to Rails (5) static pages
 tags:
 - Computing
+redirect_to: http://www.anthonysmith.me.uk/2013/10/21/wordpress-to-rails-5-static-pages/
 ---
 WordPress lumps posts and static pages together in one database table, but they need to be handled quite differently.
 

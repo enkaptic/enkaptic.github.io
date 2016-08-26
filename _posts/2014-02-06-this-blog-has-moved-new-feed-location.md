@@ -2,6 +2,7 @@
 title: 'This blog has moved: NEW FEED LOCATION'
 tags:
 - Admin
+redirect_to: http://www.anthonysmith.me.uk/2014/02/06/this-blog-has-moved-new-feed-location/
 ---
 I've moved this blog over to [Jekyll](http://jekyllrb.com/), and over to my new(ish) domain, [www.enkaptic.co.uk](http://www.enkaptic.co.uk/). Old links should keep redirecting... but not for very long!
 
