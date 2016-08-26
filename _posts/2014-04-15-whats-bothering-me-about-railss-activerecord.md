@@ -1,5 +1,7 @@
 ---
 title: What's bothering me about Rails's ActiveRecord
+tags:
+- Computing
 ---
 {% highlight ruby %}
 class Product < ActiveRecord::Base

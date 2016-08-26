@@ -1,5 +1,7 @@
 ---
 title: When we write code, we shape the world
+tags:
+- Computing
 date: 2015-09-09 08:33:46.571828000 +01:00
 ---
 Fascinating talk by [Avdi Grimm](http://about.avdi.org/) at last month's [LoneStarRuby](http://www.lonestarruby.org/) on [_The Soul of Software_](https://www.youtube.com/watch?v=zs0E4E83_X8).

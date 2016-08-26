@@ -1,5 +1,7 @@
 ---
 title: WordPress to Rails (4) uploads
+tags:
+- Computing
 ---
 WordPress allows you to upload files (such as images) and include them in posts. These end up in a location such as <code>.../wp-content/uploads/2012/06/githuboctocat.jpeg</code>.
 

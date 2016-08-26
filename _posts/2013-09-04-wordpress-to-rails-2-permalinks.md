@@ -1,5 +1,7 @@
 ---
 title: WordPress to Rails (2) permalinks
+tags:
+- Computing
 ---
 
 Various changes since <a title="WordPress to Rails (1) schema and scaffold" href="/2013/09/03/wordpress-to-rails-1-schema-and-scaffold/">last time</a>, such as adding user login authentication, with the following in the User model, which seems to mimic the WordPress authentication (at least for my password):

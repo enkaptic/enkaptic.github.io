@@ -1,5 +1,8 @@
 ---
 title: Authors list script
+tags:
+- Astronomy
+- Computing
 ---
 <p>One of my most important roles within <a href="http://hermes.sussex.ac.uk/">HerMES</a> has been to generate the LaTeX for the lists of authors and affiliations in the astronomy journal papers (previous posts <a title="MNRAS line wrapping in authors lists" href="/2010/05/07/mnras-line-wrapping-in-authors-lists/">here</a> and <a title="Generating LaTeX authors lists for MNRAS and A&amp;A" href="/2010/06/03/generating-latex-authors-lists-for-mnras-and-aa/">here</a>). HerMES is a big consortium, so some of the papers have something like 100 authors (with each author contributing, say, 10 or 20 words, and the first author having the job of putting them in the right order). When the list of authors is determined by complicated rules of the consortium, and when each author has to be associated with one or more institutes, with the correct superscript numbers after their names, and everything in the correct order, then having a script to do that for you can save a lot of time.</p>
 <p>As part of my new <a title="pIDLy on GitHub" href="/2012/06/07/pidly-on-github/">GitHub</a> spree, I've made my HerMES authorship script more presentable, and it's now freely available for all the world in the <a href="https://github.com/anthonyjsmith/authors_list">authors_list</a> repository. Just download the files, use the "authors_data" template to fill in the names and institutes of the members of your consortium, then follow the instructions in the usage message for the "authors_list" script. It's written in Python, but runs as a command-line script. So far, it can produce output for MNRAS, A&amp;A and ApJ, but it wouldn't take a Python wiz to adapt it for other journals.</p>
