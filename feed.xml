@@ -9,7 +9,7 @@ permalink: /feed/index.xml
     <description>{% if site.description %}{{ site.description | xml_escape }}{% endif %}</description>    
     <link>{{ site.url }}</link>
     <atom:link href="{{ site.url }}/feed/" rel="self" type="application/rss+xml" />
-    {% for post in site.posts limit: 20 %}
+    {% for post in site.posts limit: 1 %}
     <item>
       <title>{{ post.title | xml_escape }}</title>
       <description>{{ post.content | xml_escape | replace: 'src=&quot;/', src_url | replace: 'href=&quot;/', href_url }}</description>
