@@ -1,5 +1,6 @@
 ---
 title: Software
+excerpt: I spent almost five years working on software for the Herschel Space Observatory, followed by three years on various web-based projects with Ruby on Rails.
 ---
 From the summer of 2013 to the summer of 2016, I worked on various web-based projects using [Ruby on Rails](http://rubyonrails.org/).
 
